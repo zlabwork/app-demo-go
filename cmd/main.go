@@ -7,8 +7,14 @@ import (
 )
 
 func main() {
+
+	// Init
 	e := echo.New()
+
+	// Route
 	config.SetRoute(e)
+
+	// Start
 	port := os.Getenv("APP_PORT")
 	e.Logger.Fatal(e.Start(":" + port))
 }

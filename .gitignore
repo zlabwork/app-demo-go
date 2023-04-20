@@ -43,5 +43,6 @@ Thumbs.db
 
 ### Project ###
 assets/
+config/
 bin/
 *.log
