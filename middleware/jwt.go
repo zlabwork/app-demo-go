@@ -1,6 +1,7 @@
 package middleware
 
 import (
+	"app"
 	"app/entity"
 	"github.com/golang-jwt/jwt/v4"
 	echojwt "github.com/labstack/echo-jwt/v4"
@@ -15,7 +16,7 @@ func Jwt() echo.MiddlewareFunc {
 			return new(entity.TokenClaims)
 		},
 		SigningKey: []byte(os.Getenv("APP_KEY")),
-		ContextKey: "_token",
+		ContextKey: app.ContextKey,
 	}
 
 	return echojwt.WithConfig(config)

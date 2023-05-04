@@ -46,9 +46,3 @@ func Token(c echo.Context) error {
 		ExpiresAt:    expiresAt,
 	})
 }
-
-func Restricted(c echo.Context) error {
-	user := c.Get("_token").(*jwt.Token)
-	claims := user.Claims.(*entity.TokenClaims)
-	return c.String(http.StatusOK, "Welcome "+claims.UserId+"!")
-}

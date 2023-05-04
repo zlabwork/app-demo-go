@@ -14,7 +14,7 @@ func SetRoute(e *echo.Echo) {
 	// e.Use(middleware.Recover())
 	r := e.Group("/api")
 	r.Use(middleware.Jwt())
-	r.GET("", api.Restricted)
+	r.GET("/me", api.Me)
 
 	// defined
 	e.POST("/token", api.Token)
