@@ -4,7 +4,6 @@ import (
 	"app/api"
 	"app/middleware"
 	"github.com/labstack/echo/v4"
-	"net/http"
 )
 
 func SetRoute(e *echo.Echo) {
@@ -19,10 +18,8 @@ func SetRoute(e *echo.Echo) {
 	r.GET("/me", api.Me)
 
 	// defined
+	e.GET("/", api.Home)
 	e.POST("/token", api.Token)
-	e.GET("/", func(c echo.Context) error {
-		return c.String(http.StatusOK, "Hello, World!")
-	})
 
 	// assets
 	e.Static("/assets", "assets")
