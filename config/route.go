@@ -12,6 +12,7 @@ func SetRoute(e *echo.Echo) {
 	// Middleware
 	e.Use(middleware.RequestID())
 	e.Use(middleware.Logger())
+	e.Use(middleware.Cors())
 	// e.Use(middleware.Recover())
 	r := e.Group("/api")
 	r.Use(middleware.Jwt())
