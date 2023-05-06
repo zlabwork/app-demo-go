@@ -57,4 +57,21 @@ CREATE TABLE "public"."zl_users" (
 ) WITH (oids = false);
 
 
--- 2023-05-04 18:34:28.794893+08
+DROP TABLE IF EXISTS "zl_users_map";
+DROP SEQUENCE IF EXISTS users_map_id_seq;
+CREATE SEQUENCE users_map_id_seq INCREMENT 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1;
+
+CREATE TABLE "public"."zl_users_map" (
+    "id" integer DEFAULT nextval('users_map_id_seq') NOT NULL,
+    "user_id" integer DEFAULT '0' NOT NULL,
+    "map_type" smallint DEFAULT '0' NOT NULL,
+    "map_id" character varying(32) DEFAULT '' NOT NULL,
+    "data" character varying(128) DEFAULT '' NOT NULL,
+    "created_at" timestamp DEFAULT '0001-01-01 00:00:00' NOT NULL,
+    "updated_at" timestamp DEFAULT '0001-01-01 00:00:00' NOT NULL,
+    CONSTRAINT "users_map_pkey" PRIMARY KEY ("id"),
+    CONSTRAINT "users_map_uniq" UNIQUE ("map_id", "map_type")
+) WITH (oids = false);
+
+
+-- 2023-05-06 09:48:20.648809+08
