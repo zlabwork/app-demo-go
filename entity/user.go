@@ -5,14 +5,14 @@ import (
 )
 
 type User struct {
-	Id        int64
-	Alias     string
-	Name      string
-	Gender    int
-	Birth     time.Time
-	State     int
-	CreatedAt time.Time
-	UpdatedAt time.Time
+	Id        int64     `json:"id"`
+	Alias     string    `json:"alias"`
+	Name      string    `json:"name"`
+	Gender    int       `json:"gender"`
+	Birth     time.Time `json:"birth"`
+	State     int       `json:"state"`
+	CreatedAt time.Time `json:"created_at"`
+	UpdatedAt time.Time `json:"updated_at"`
 }
 
 func (User) TableName() string {
