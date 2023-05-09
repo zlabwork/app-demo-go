@@ -208,9 +208,14 @@ Visit [here](https://github.com/avelino/awesome-go) for more about the libraries
 | [github.com/uber-go/zap](https://github.com/uber-go/zap) | 日志 |
 | [github.com/bwmarrin/snowflake](https://github.com/bwmarrin/snowflake) | ID生成 |
 | [github.com/google/uuid](https://github.com/google/uuid) | UUID生成 |
+| [github.com/panjf2000/ants](https://github.com/panjf2000/ants) | ants 线程池 |
 | [github.com/silenceper/pool](https://github.com/silenceper/pool) | 线程池 |
 | [github.com/apache/thrift](https://github.com/apache/thrift) | Thrift |
 | [github.com/golang-jwt/jwt/v4](https://github.com/golang-jwt/jwt/v4) | Json web token |
+| [github.com/panjf2000/gnet](https://github.com/panjf2000/gnet) | 事件驱动 |
+| [github.com/ThreeDotsLabs/watermill](https://github.com/ThreeDotsLabs/watermill) | 事件驱动 |
+| [github.com/asaskevich/EventBus](https://github.com/asaskevich/EventBus) | EventBus |
+| [github.com/lesismal/nbio](https://github.com/lesismal/nbio) | 异步网络框架 |
 
 
 ## Technology
