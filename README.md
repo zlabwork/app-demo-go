@@ -188,9 +188,8 @@ Visit [here](https://github.com/avelino/awesome-go) for more about the libraries
 
 | 包名 | 简介 |
 | --- | --- |
-| [github.com/gorilla/mux](https://github.com/gorilla/mux) | web 框架 |
+| [github.com/labstack/echo](https://github.com/labstack/echo) | web 框架 |
 | [github.com/gin-gonic/gin](https://github.com/gin-gonic/gin) | web 框架 |
-| [github.com/gorilla/sessions](https://github.com/gorilla/sessions) | session |
 | [github.com/joho/godotenv](https://github.com/joho/godotenv) | 配置, env 环境变量 |
 | [gopkg.in/yaml.v3](https://gopkg.in/yaml.v3) | 配置, yaml |
 | [github.com/spf13/viper](https://github.com/spf13/viper) | 配置, 支持多种格式 |
