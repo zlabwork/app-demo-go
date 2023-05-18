@@ -6,13 +6,13 @@ import (
 )
 
 type Token struct {
-	UserId       string    `json:"user_id"`
+	UserId       int64     `json:"user_id"`
 	AccessToken  string    `json:"access_token"`
 	RefreshToken string    `json:"refresh_token"`
 	ExpiresAt    time.Time `json:"expires_at"`
 }
 
 type TokenClaims struct {
-	UserId string `json:"uid,omitempty"`
+	UserId int64 `json:"uid,omitempty"`
 	jwt.RegisteredClaims
 }
