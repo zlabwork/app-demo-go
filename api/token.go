@@ -1,20 +1,28 @@
 package api
 
 import (
+	"app"
 	"app/entity"
+	"app/service/cache"
+	"fmt"
 	"github.com/golang-jwt/jwt/v4"
 	"github.com/google/uuid"
 	"github.com/labstack/echo/v4"
-	"net/http"
 	"os"
 	"time"
+)
+
+const (
+	accessTokenTimeout  = time.Hour * 72
+	refreshTokenTimeout = time.Hour * 24 * 20
+	refreshTokenKey     = "_RT:%s"
 )
 
 func Token(c echo.Context) error {
 
 	userId := "123456"
 	userName := "XieShan"
-	expiresAt := time.Now().Add(time.Hour * 72)
+	expiresAt := time.Now().Add(accessTokenTimeout)
 	claims := &entity.TokenClaims{
 		UserId: userId,
 		RegisteredClaims: jwt.RegisteredClaims{
@@ -38,11 +46,18 @@ func Token(c echo.Context) error {
 
 	// Refresh Token
 	rt := uuid.New().String()
+	key := fmt.Sprintf(refreshTokenKey, userId)
+	cache.Set(c.Request().Context(), key, []byte(rt), refreshTokenTimeout)
 
-	return c.JSON(http.StatusOK, entity.Token{
+	return app.RespData(c, entity.Token{
 		UserId:       userId,
 		AccessToken:  tk,
 		RefreshToken: rt,
 		ExpiresAt:    expiresAt,
 	})
+}
+
+func RefreshToken(c echo.Context) error {
+
+	return app.RespSuccess(c)
 }

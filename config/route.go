@@ -16,6 +16,7 @@ func SetRoute(e *echo.Echo) {
 	// defined
 	e.GET("/", api.Home)
 	e.POST("/token", api.Token)
+	e.PUT("/token", api.RefreshToken)
 	e.Static("/assets", "assets")
 	e.File("/favicon.ico", "assets/favicon.svg")
 
