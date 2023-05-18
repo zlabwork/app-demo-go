@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
+	"gorm.io/gorm/schema"
 	"os"
 	"time"
 )
@@ -15,11 +16,18 @@ var err error
 // @docs https://gorm.io/zh_CN/docs/connecting_to_the_database.html
 func connect(dsn string) (*gorm.DB, error) {
 
+	opts := &gorm.Config{
+		NamingStrategy: schema.NamingStrategy{
+			TablePrefix: os.Getenv("TABLE_PREFIX"),
+			// SingularTable: true,
+		},
+	}
+
 	// https://github.com/go-gorm/postgres
 	conn, err = gorm.Open(postgres.New(postgres.Config{
 		DSN:                  dsn,
 		PreferSimpleProtocol: true, // disables implicit prepared statement usage
-	}), &gorm.Config{})
+	}), opts)
 
 	db, err := conn.DB()
 
