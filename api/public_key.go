@@ -6,6 +6,7 @@ import (
 	"encoding/pem"
 	"github.com/labstack/echo/v4"
 	"io"
+	"net/http"
 	"os"
 )
 
@@ -15,11 +16,11 @@ func PublicKey(c echo.Context) error {
 	env := os.Getenv("APP_ENV")
 	f, err := os.Open("config/public." + env + ".pem")
 	if err != nil {
-		return err
+		return app.RespFailed(c, http.StatusNoContent)
 	}
 	bs, err := io.ReadAll(f)
 	if err != nil {
-		return err
+		return app.RespFailed(c, http.StatusNoContent)
 	}
 
 	// 2.
