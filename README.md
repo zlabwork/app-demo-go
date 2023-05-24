@@ -203,6 +203,9 @@ Visit [here](https://github.com/avelino/awesome-go) for more about the libraries
 | [github.com/valyala/fastjson](https://github.com/valyala/fastjson) | json 解析 |
 | [github.com/tidwall/gjson](https://github.com/tidwall/gjson) | json 解析, 注意: []强制转为字符串后为[] |
 | [github.com/buger/jsonparser](https://github.com/buger/jsonparser) | json 解析 |
+| [github.com/CloudyKit/jet](https://github.com/CloudyKit/jet)| jet 模版引擎 |
+| [github.com/flosch/pongo2](https://github.com/flosch/pongo2)| pongo2 模版引擎 |
+| [github.com/Masterminds/sprig](https://github.com/Masterminds/sprig)| sprig 模版函数 |
 | [github.com/Sirupsen/logrus](https://github.com/Sirupsen/logrus) | 日志 |
 | [github.com/uber-go/zap](https://github.com/uber-go/zap) | 日志 |
 | [github.com/bwmarrin/snowflake](https://github.com/bwmarrin/snowflake) | ID生成 |
