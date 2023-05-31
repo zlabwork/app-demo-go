@@ -23,7 +23,10 @@ require (
 	gorm.io/gorm v1.25.0
 )
 
-require github.com/bwmarrin/snowflake v0.3.0
+require (
+	github.com/bwmarrin/snowflake v0.3.0
+	gopkg.in/yaml.v2 v2.4.0
+)
 
 require (
 	github.com/ThreeDotsLabs/watermill v1.2.0 // indirect

@@ -5,6 +5,8 @@ import (
 	"github.com/bwmarrin/snowflake"
 	"github.com/golang-jwt/jwt/v4"
 	"github.com/labstack/echo/v4"
+	"gopkg.in/yaml.v2"
+	"log"
 	"os"
 	"strconv"
 )
@@ -21,6 +23,15 @@ type libs struct {
 
 func init() {
 	Libs = NewLibs()
+
+	// app.yaml
+	bs, err := os.ReadFile("config/app.yaml")
+	if err != nil {
+		log.Fatal(err)
+	}
+	if yaml.Unmarshal(bs, Yaml) != nil {
+		log.Fatal(err)
+	}
 }
 
 func NewLibs() *libs {
