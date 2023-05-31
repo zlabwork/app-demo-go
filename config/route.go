@@ -15,6 +15,7 @@ func SetRoute(e *echo.Echo) {
 
 	// defined
 	e.GET("/", api.Home)
+	e.GET("/sample", api.SampleTemplate)
 	e.GET("/public_key", api.PublicKey)
 	e.POST("/token", api.Token)
 	e.PUT("/token", api.RefreshToken)
