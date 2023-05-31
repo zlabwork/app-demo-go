@@ -4,6 +4,7 @@ import (
 	"github.com/labstack/echo/v4"
 	"net/http"
 	"os"
+	"time"
 )
 
 func Home(c echo.Context) error {
@@ -11,5 +12,10 @@ func Home(c echo.Context) error {
 }
 
 func SampleTemplate(c echo.Context) error {
-	return c.Render(http.StatusOK, "layouts/main", nil)
+	type wrap struct {
+		Title    string
+		CreateAt time.Time
+	}
+	data := &wrap{Title: "this is title", CreateAt: time.Now()}
+	return c.Render(http.StatusOK, "layouts/main", data)
 }
