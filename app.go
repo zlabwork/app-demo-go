@@ -15,33 +15,59 @@ const (
 	ContextKey = "_token"
 )
 
-var Libs *libs
+var (
+	Dir  = &directory{}
+	Libs *libraries
+)
 
-type libs struct {
+type directory struct {
+	Root   string
+	Config string
+	Data   string
+}
+
+type libraries struct {
 	Snow *snowflake.Node
 }
 
-func init() {
-	Libs = NewLibs()
+func (d *directory) SetPath() {
+	// TODO :: FIXME
+	root := "./"
+	d.Root = root
+	d.Config = root + "config/"
+}
 
-	// app.yaml
-	bs, err := os.ReadFile("config/app.yaml")
+func init() {
+
+	// 1. set path
+	Dir.SetPath()
+
+	// 2. check env
+	if len(os.Getenv("APP_ENV")) == 0 {
+		log.Fatal("env is missing, try to execute 'export `cat .env`' before run the app")
+	}
+
+	// 3. config
+	bs, err := os.ReadFile(Dir.Config + "app.yaml")
 	if err != nil {
 		log.Fatal(err)
 	}
 	if yaml.Unmarshal(bs, Yaml) != nil {
 		log.Fatal(err)
 	}
+
+	// 4. libs
+	Libs = NewLibs()
 }
 
-func NewLibs() *libs {
+func NewLibs() *libraries {
 
 	i, _ := strconv.ParseInt(os.Getenv("APP_NODE"), 10, 64)
 	snowflake.Epoch = 1498612200000 // 2017-06-28 09:10:00
 	snowflake.NodeBits = 8
 	snowflake.StepBits = 14
 	sn, _ := snowflake.NewNode(i)
-	return &libs{
+	return &libraries{
 		Snow: sn,
 	}
 }
