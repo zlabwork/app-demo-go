@@ -1,6 +1,7 @@
 package main
 
 import (
+	"app"
 	"app/config"
 	"github.com/labstack/echo/v4"
 	"io"
@@ -16,7 +17,7 @@ func (tpl *Template) Render(w io.Writer, name string, data interface{}, c echo.C
 	// @docs https://colobu.com/2016/10/09/Go-embedded-template-best-practices/
 
 	// parse template every time
-	if os.Getenv("APP_ENV") == "dev" {
+	if app.Env.IsDev {
 		tpl.templates = template.Must(template.ParseGlob("templates/*/*.html"))
 	}
 	return tpl.templates.ExecuteTemplate(w, name, data)

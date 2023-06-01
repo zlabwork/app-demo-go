@@ -17,8 +17,14 @@ const (
 
 var (
 	Dir  = &directory{}
+	Env  = &environment{}
 	Libs *libraries
 )
+
+type environment struct {
+	IsDev  bool
+	IsProd bool
+}
 
 type directory struct {
 	Root   string
@@ -30,17 +36,26 @@ type libraries struct {
 	Snow *snowflake.Node
 }
 
-func (d *directory) SetPath() {
+func (d *directory) Setting() {
 	// TODO :: FIXME
 	root := "./"
 	d.Root = root
 	d.Config = root + "config/"
 }
 
+func (e *environment) Setting() {
+	if os.Getenv("APP_ENV") == "dev" {
+		e.IsDev = true
+	} else if os.Getenv("APP_ENV") == "prod" {
+		e.IsProd = true
+	}
+}
+
 func init() {
 
-	// 1. set path
-	Dir.SetPath()
+	// 1. setting
+	Dir.Setting()
+	Env.Setting()
 
 	// 2. check env
 	if len(os.Getenv("APP_ENV")) == 0 {
