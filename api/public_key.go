@@ -10,23 +10,29 @@ import (
 	"os"
 )
 
+var _publicKey []byte
+
 func PublicKey(c echo.Context) error {
 
-	// 1.
-	env := os.Getenv("APP_ENV")
-	f, err := os.Open("config/public." + env + ".pem")
-	if err != nil {
-		return app.RespFailed(c, http.StatusNoContent)
-	}
-	bs, err := io.ReadAll(f)
-	if err != nil {
-		return app.RespFailed(c, http.StatusNoContent)
+	if _publicKey == nil {
+
+		// 1.
+		env := os.Getenv("APP_ENV")
+		f, err := os.Open("config/public." + env + ".pem")
+		if err != nil {
+			return app.RespFailed(c, http.StatusNoContent)
+		}
+		bs, err := io.ReadAll(f)
+		if err != nil {
+			return app.RespFailed(c, http.StatusNoContent)
+		}
+
+		// 2.
+		block, _ := pem.Decode(bs)
+		_publicKey = block.Bytes
 	}
 
-	// 2.
-	block, _ := pem.Decode(bs)
-	key := base64.StdEncoding.EncodeToString(block.Bytes)
-
+	key := base64.StdEncoding.EncodeToString(_publicKey)
 	type publicKey struct {
 		Format    string `json:"format,omitempty"`
 		PublicKey string `json:"public_key,omitempty"`
