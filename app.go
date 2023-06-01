@@ -72,7 +72,7 @@ func NewLibs() *libraries {
 	}
 }
 
-func GetUser(c echo.Context) *entity.TokenClaims {
-	user := c.Get(ContextKey).(*jwt.Token)
-	return user.Claims.(*entity.TokenClaims)
+func ParseToken(c echo.Context) *entity.TokenClaims {
+	t := c.Get(ContextKey).(*jwt.Token)
+	return t.Claims.(*entity.TokenClaims)
 }

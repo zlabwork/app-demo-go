@@ -9,11 +9,11 @@ import (
 )
 
 func Me(c echo.Context) error {
-	user := app.GetUser(c)
+	token := app.ParseToken(c)
 
 	return c.JSON(http.StatusOK, entity.RespData{
 		Code:    msg.OK,
 		Message: "success",
-		Data:    user.UserId,
+		Data:    token.UserId,
 	})
 }
