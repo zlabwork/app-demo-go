@@ -4,6 +4,7 @@ import (
 	"app/api"
 	"app/middleware"
 	"github.com/labstack/echo/v4"
+	echoMiddleware "github.com/labstack/echo/v4/middleware"
 )
 
 func SetRoute(e *echo.Echo) {
@@ -12,6 +13,7 @@ func SetRoute(e *echo.Echo) {
 	e.Use(middleware.RequestID())
 	e.Use(middleware.Logger())
 	e.Use(middleware.Cors())
+	e.Pre(echoMiddleware.RemoveTrailingSlash())
 
 	// defined
 	e.GET("/", api.Home)
