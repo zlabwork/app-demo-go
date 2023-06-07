@@ -3,12 +3,18 @@ package api
 import (
 	"github.com/labstack/echo/v4"
 	"net/http"
-	"os"
+	"runtime"
 	"time"
 )
 
 func Home(c echo.Context) error {
-	return c.String(http.StatusOK, os.Getenv("APP_NAME")+" is ok")
+	type wrap struct {
+		GolangVersion string
+		EchoVersion   string
+	}
+
+	data := &wrap{GolangVersion: runtime.Version(), EchoVersion: echo.Version}
+	return c.Render(http.StatusOK, "layouts/default", data)
 }
 
 func SampleTemplate(c echo.Context) error {
