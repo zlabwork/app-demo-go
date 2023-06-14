@@ -218,6 +218,7 @@ Visit [here](https://github.com/avelino/awesome-go) for more about the libraries
 | [github.com/ThreeDotsLabs/watermill](https://github.com/ThreeDotsLabs/watermill) | 发布订阅 |
 | [github.com/asaskevich/EventBus](https://github.com/asaskevich/EventBus) | EventBus |
 | [github.com/lesismal/nbio](https://github.com/lesismal/nbio) | 异步网络框架 |
+| [github.com/sashabaranov/go-openai](https://github.com/sashabaranov/go-openai) | ChatGPT OPENAI |
 
 
 ## Technology
@@ -229,7 +230,9 @@ Visit [here](https://github.com/avelino/awesome-go) for more about the libraries
 
 
 ## Tools
+https://platform.openai.com  
 https://mholt.github.io/json-to-go  
+https://www.jsonformatter.io  
 https://www.processon.com  
 https://www.figma.com  
 https://swagger.io  
