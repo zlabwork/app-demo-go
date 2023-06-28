@@ -51,6 +51,22 @@ const (
 ```
 
 
+## Rand Read
+```golang
+b := make([]byte, 32)
+rand.Read(b)
+```
+
+
+## Copy
+```golang
+// bytes
+bs[0] = 0x1F
+copy(bs, bs1)
+bytes.Split(bs, []byte{0x1F})
+```
+
+
 ## Uint32/16/8 to bytes
 ```golang
 // uint64 to []byte
@@ -80,15 +96,7 @@ num := bs[0]
 ```
 
 
-## Copy
-```golang
-// bytes
-bs[0] = 0x1F
-copy(bs, bs1)
-bytes.Split(bs, []byte{0x1F})
-```
-
-
+## Sync
 ```golang
 // 守护进程
 var w sync.WaitGroup
@@ -105,6 +113,7 @@ w.Wait()
 ```
 
 
+## Map & Array
 ```golang
 // map是无序的, 数组是有序的
 var foo = [3]int{1, 2, 3}
