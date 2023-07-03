@@ -228,6 +228,9 @@ Visit [here](https://github.com/avelino/awesome-go) for more about the libraries
 | [github.com/asaskevich/EventBus](https://github.com/asaskevich/EventBus) | EventBus |
 | [github.com/lesismal/nbio](https://github.com/lesismal/nbio) | 异步网络框架 |
 | [github.com/sashabaranov/go-openai](https://github.com/sashabaranov/go-openai) | ChatGPT OPENAI |
+| [github.com/RoaringBitmap/roaring](https://github.com/RoaringBitmap/roaring) | RoaringBitmap |
+| [github.com/kelindar/bitmap](https://github.com/kelindar/bitmap) | bitmap |
+| [github.com/bits-and-blooms/bitset](https://github.com/bits-and-blooms/bitset) | bitset |
 
 
 ## Technology
