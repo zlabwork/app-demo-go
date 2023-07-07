@@ -11,12 +11,11 @@ const (
 	ErrTimeout
 	ErrSignature
 	ErrAccess
-	ErrEncode
+	ErrEncoding
 	ErrHeader
 	ErrParameter
 	ErrProcess
-	ErrNoData
-	ErrModify
+	ErrWrite
 )
 
 var statusText = map[int]string{
@@ -26,12 +25,11 @@ var statusText = map[int]string{
 	ErrTimeout:   "error request time",
 	ErrSignature: "error request signature",
 	ErrAccess:    "error access",
-	ErrEncode:    "error encode",
+	ErrEncoding:  "error encoding",
 	ErrHeader:    "error request headers",
 	ErrParameter: "error parameter",
-	ErrProcess:   "error in execute process",
-	ErrNoData:    "can not find",
-	ErrModify:    "error when modify data",
+	ErrProcess:   "error in process",
+	ErrWrite:     "failed when write data",
 }
 
 func Text(code int) string {
