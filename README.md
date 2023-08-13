@@ -217,6 +217,7 @@ Visit [here](https://github.com/avelino/awesome-go) for more about the libraries
 | [github.com/Masterminds/sprig](https://github.com/Masterminds/sprig)| sprig 模版函数 |
 | [github.com/Sirupsen/logrus](https://github.com/Sirupsen/logrus) | 日志 |
 | [github.com/uber-go/zap](https://github.com/uber-go/zap) | 日志 |
+| [sqids.org](https://sqids.org/) | sqids.org |
 | [github.com/bwmarrin/snowflake](https://github.com/bwmarrin/snowflake) | ID生成 |
 | [github.com/google/uuid](https://github.com/google/uuid) | UUID生成 |
 | [github.com/panjf2000/ants](https://github.com/panjf2000/ants) | ants 线程池 |
