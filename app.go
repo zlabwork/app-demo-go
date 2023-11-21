@@ -3,7 +3,7 @@ package app
 import (
 	"app/entity"
 	"github.com/bwmarrin/snowflake"
-	"github.com/golang-jwt/jwt/v4"
+	"github.com/golang-jwt/jwt/v5"
 	"github.com/labstack/echo/v4"
 	"gopkg.in/yaml.v2"
 	"log"

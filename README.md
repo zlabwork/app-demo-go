@@ -223,7 +223,7 @@ Visit [here](https://github.com/avelino/awesome-go) for more about the libraries
 | [github.com/panjf2000/ants](https://github.com/panjf2000/ants) | ants 线程池 |
 | [github.com/silenceper/pool](https://github.com/silenceper/pool) | 线程池 |
 | [github.com/apache/thrift](https://github.com/apache/thrift) | Thrift |
-| [github.com/golang-jwt/jwt/v4](https://github.com/golang-jwt/jwt/v4) | Json web token |
+| [github.com/golang-jwt/jwt/v5](https://github.com/golang-jwt/jwt/v5) | Json web token |
 | [github.com/panjf2000/gnet](https://github.com/panjf2000/gnet) | 基于事件驱动的网络框架 |
 | [github.com/ThreeDotsLabs/watermill](https://github.com/ThreeDotsLabs/watermill) | 发布订阅 |
 | [github.com/asaskevich/EventBus](https://github.com/asaskevich/EventBus) | EventBus |
