@@ -2,9 +2,9 @@ package api
 
 import (
 	"app"
-	"app/entity"
-	"app/msg"
-	"app/service/cache"
+	"app/internal/entity"
+	"app/internal/msg"
+	"app/internal/service/cache"
 	"context"
 	"encoding/json"
 	"fmt"

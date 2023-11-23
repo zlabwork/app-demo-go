@@ -2,8 +2,8 @@ package api
 
 import (
 	"app"
-	"app/entity"
-	"app/msg"
+	"app/internal/entity"
+	"app/internal/msg"
 	"github.com/labstack/echo/v4"
 	"net/http"
 )

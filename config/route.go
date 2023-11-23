@@ -1,8 +1,8 @@
 package config
 
 import (
-	"app/api"
-	"app/middleware"
+	"app/internal/api"
+	"app/internal/middleware"
 	"github.com/labstack/echo/v4"
 	echoMiddleware "github.com/labstack/echo/v4/middleware"
 )

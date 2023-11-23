@@ -1,7 +1,7 @@
 package postgres
 
 import (
-	"app/entity"
+	"app/internal/entity"
 	"context"
 	"gorm.io/gorm"
 	"time"

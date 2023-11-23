@@ -1,7 +1,7 @@
 package app
 
 import (
-	"app/entity"
+	"app/internal/entity"
 	"github.com/bwmarrin/snowflake"
 	"github.com/golang-jwt/jwt/v5"
 	"github.com/labstack/echo/v4"

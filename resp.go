@@ -1,7 +1,7 @@
 package app
 
 import (
-	"app/entity"
+	"app/internal/entity"
 	"github.com/labstack/echo/v4"
 	"net/http"
 )
