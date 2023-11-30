@@ -1,6 +1,7 @@
 package boot
 
 import (
+	"app/internal/consts"
 	"app/internal/entity"
 	"github.com/bwmarrin/snowflake"
 	"github.com/golang-jwt/jwt/v5"
@@ -9,10 +10,6 @@ import (
 	"log"
 	"os"
 	"strconv"
-)
-
-const (
-	ContextKey = "_token"
 )
 
 var (
@@ -88,6 +85,6 @@ func NewLibs() *libraries {
 }
 
 func ParseToken(c echo.Context) *entity.TokenClaims {
-	t := c.Get(ContextKey).(*jwt.Token)
+	t := c.Get(consts.ContextKey).(*jwt.Token)
 	return t.Claims.(*entity.TokenClaims)
 }

@@ -1,7 +1,7 @@
 package middleware
 
 import (
-	"app/internal/boot"
+	"app/internal/consts"
 	"app/internal/entity"
 	"app/internal/msg"
 	"github.com/golang-jwt/jwt/v5"
@@ -17,12 +17,17 @@ func Jwt() echo.MiddlewareFunc {
 			return new(entity.TokenClaims)
 		},
 		SigningKey: []byte(os.Getenv("APP_KEY")),
-		ContextKey: boot.ContextKey,
+		ContextKey: consts.ContextKey,
 		ErrorHandler: func(c echo.Context, err error) error {
 			return c.JSON(msg.OK, entity.RespData{
 				Code:    msg.ErrAccess,
 				Message: "error access",
 			})
+		},
+		SuccessHandler: func(c echo.Context) {
+			t := c.Get(consts.ContextKey).(*jwt.Token)
+			uid := t.Claims.(*entity.TokenClaims).UserId
+			c.Set(consts.UserId, uid)
 		},
 	}
 
