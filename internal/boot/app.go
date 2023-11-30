@@ -1,4 +1,4 @@
-package app
+package boot
 
 import (
 	"app/internal/entity"
@@ -67,7 +67,7 @@ func init() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	if yaml.Unmarshal(bs, Yaml) != nil {
+	if yaml.Unmarshal(bs, entity.Yaml) != nil {
 		log.Fatal(err)
 	}
 

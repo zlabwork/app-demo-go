@@ -1,4 +1,4 @@
-package app
+package entity
 
 var Yaml = &yamlData{}
 

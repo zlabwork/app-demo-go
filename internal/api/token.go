@@ -1,7 +1,6 @@
 package api
 
 import (
-	"app"
 	"app/internal/entity"
 	"app/internal/msg"
 	"app/internal/service/cache"
@@ -25,10 +24,10 @@ func Token(c echo.Context) error {
 
 	token, err := genToken(123456)
 	if err != nil {
-		return app.RespFailed(c, msg.ErrProcess)
+		return RespFailed(c, msg.ErrProcess)
 	}
 
-	return app.RespData(c, token)
+	return RespData(c, token)
 }
 
 func RefreshToken(c echo.Context) error {
@@ -39,28 +38,28 @@ func RefreshToken(c echo.Context) error {
 	}
 	req := handler{}
 	if json.NewDecoder(c.Request().Body).Decode(&req) != nil {
-		return app.RespFailed(c, msg.ErrParameter)
+		return RespFailed(c, msg.ErrParameter)
 	}
 
 	// get refresh_token
 	key := fmt.Sprintf(refreshTokenKey, req.UserId)
 	bs, err := cache.Get(c.Request().Context(), key)
 	if err != nil {
-		return app.RespFailed(c, msg.ErrProcess)
+		return RespFailed(c, msg.ErrProcess)
 	}
 
 	// check
 	if string(bs) != req.RefreshToken {
-		return app.RespFailedWithMessage(c, msg.ErrAccess, "error refresh_token")
+		return RespFailedWithMessage(c, msg.ErrAccess, "error refresh_token")
 	}
 
 	// new access_token
 	token, err := genToken(req.UserId)
 	if err != nil {
-		return app.RespFailed(c, msg.ErrProcess)
+		return RespFailed(c, msg.ErrProcess)
 	}
 
-	return app.RespData(c, token)
+	return RespData(c, token)
 }
 
 func genToken(userId int64) (*entity.Token, error) {

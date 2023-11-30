@@ -1,7 +1,7 @@
 package api
 
 import (
-	"app"
+	"app/internal/boot"
 	"app/internal/entity"
 	"app/internal/msg"
 	"github.com/labstack/echo/v4"
@@ -9,7 +9,7 @@ import (
 )
 
 func Me(c echo.Context) error {
-	token := app.ParseToken(c)
+	token := boot.ParseToken(c)
 
 	return c.JSON(http.StatusOK, entity.RespData{
 		Code:    msg.OK,

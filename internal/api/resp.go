@@ -1,4 +1,4 @@
-package app
+package api
 
 import (
 	"app/internal/entity"
