@@ -24,7 +24,7 @@ func Token(c echo.Context) error {
 
 	token, err := genToken(123456)
 	if err != nil {
-		return RespFailed(c, msg.ErrProcess)
+		return RespFailed(c, msg.StatusError)
 	}
 
 	return RespData(c, token)
@@ -38,25 +38,25 @@ func RefreshToken(c echo.Context) error {
 	}
 	req := handler{}
 	if json.NewDecoder(c.Request().Body).Decode(&req) != nil {
-		return RespFailed(c, msg.ErrParameter)
+		return RespFailed(c, msg.StatusInvalidRequest)
 	}
 
 	// get refresh_token
 	key := fmt.Sprintf(refreshTokenKey, req.UserId)
 	bs, err := cache.Get(c.Request().Context(), key)
 	if err != nil {
-		return RespFailed(c, msg.ErrProcess)
+		return RespFailed(c, msg.StatusServerError)
 	}
 
 	// check
 	if string(bs) != req.RefreshToken {
-		return RespFailedWithMessage(c, msg.ErrAccess, "error refresh_token")
+		return RespFailedWithMessage(c, msg.StatusForbidden, "error refresh_token")
 	}
 
 	// new access_token
 	token, err := genToken(req.UserId)
 	if err != nil {
-		return RespFailed(c, msg.ErrProcess)
+		return RespFailed(c, msg.StatusServerError)
 	}
 
 	return RespData(c, token)
@@ -90,7 +90,7 @@ func genToken(userId int64) (*entity.Token, error) {
 	// Refresh Token
 	rt := uuid.New().String()
 	key := fmt.Sprintf(refreshTokenKey, userId)
-	cache.Set(context.TODO(), key, []byte(rt), refreshTokenTimeout)
+	_ = cache.Set(context.TODO(), key, []byte(rt), refreshTokenTimeout)
 
 	return &entity.Token{
 		UserId:       userId,

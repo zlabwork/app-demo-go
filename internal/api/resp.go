@@ -1,36 +1,36 @@
 package api
 
 import (
-	"app/internal/entity"
+	"app/internal/msg"
 	"github.com/labstack/echo/v4"
 	"net/http"
 )
 
-func RespFailed(c echo.Context, code int) error {
-	return c.JSON(http.StatusOK, entity.RespData{
-		Code:    code,
-		Message: http.StatusText(code),
+func RespFailed(c echo.Context, status string) error {
+	return c.JSON(http.StatusOK, msg.DataWrap{
+		Status:  status,
+		Message: status,
 	})
 }
 
-func RespFailedWithMessage(c echo.Context, code int, message string) error {
-	return c.JSON(http.StatusOK, entity.RespData{
-		Code:    code,
+func RespFailedWithMessage(c echo.Context, status string, message string) error {
+	return c.JSON(http.StatusOK, msg.DataWrap{
+		Status:  status,
 		Message: message,
 	})
 }
 
 func RespSuccess(c echo.Context) error {
-	return c.JSON(http.StatusOK, entity.RespData{
-		Code:    http.StatusOK,
-		Message: http.StatusText(http.StatusOK),
+	return c.JSON(http.StatusOK, msg.DataWrap{
+		Status:  msg.StatusSuccess,
+		Message: msg.StatusSuccess,
 	})
 }
 
 func RespData(c echo.Context, data interface{}) error {
-	return c.JSON(http.StatusOK, entity.RespData{
-		Code:    http.StatusOK,
-		Message: http.StatusText(http.StatusOK),
+	return c.JSON(http.StatusOK, msg.DataWrap{
+		Status:  msg.StatusSuccess,
+		Message: msg.StatusSuccess,
 		Data:    data,
 	})
 }

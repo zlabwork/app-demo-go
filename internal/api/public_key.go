@@ -1,11 +1,11 @@
 package api
 
 import (
+	"app/internal/msg"
 	"encoding/base64"
 	"encoding/pem"
 	"github.com/labstack/echo/v4"
 	"io"
-	"net/http"
 	"os"
 )
 
@@ -19,11 +19,11 @@ func PublicKey(c echo.Context) error {
 		env := os.Getenv("APP_ENV")
 		f, err := os.Open("config/public." + env + ".pem")
 		if err != nil {
-			return RespFailed(c, http.StatusNoContent)
+			return RespFailed(c, msg.StatusNotFound)
 		}
 		bs, err := io.ReadAll(f)
 		if err != nil {
-			return RespFailed(c, http.StatusNoContent)
+			return RespFailed(c, msg.StatusServerError)
 		}
 
 		// 2.

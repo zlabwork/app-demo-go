@@ -7,6 +7,7 @@ import (
 	"github.com/golang-jwt/jwt/v5"
 	echojwt "github.com/labstack/echo-jwt/v4"
 	"github.com/labstack/echo/v4"
+	"net/http"
 	"os"
 )
 
@@ -19,8 +20,8 @@ func Jwt() echo.MiddlewareFunc {
 		SigningKey: []byte(os.Getenv("APP_KEY")),
 		ContextKey: consts.ContextKey,
 		ErrorHandler: func(c echo.Context, err error) error {
-			return c.JSON(msg.OK, entity.RespData{
-				Code:    msg.ErrAccess,
+			return c.JSON(http.StatusOK, msg.DataWrap{
+				Status:  msg.StatusUnauthorized,
 				Message: "error access",
 			})
 		},
